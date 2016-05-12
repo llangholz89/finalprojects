@@ -1,14 +1,12 @@
 #! usr/bin/env python
 
-#####################################################
-'''Creates tables for each chromosome that contain:
-1) Chromosome name 2) gene name 3) gene length 4) GC%'''
-#####################################################
+########################################################################
+'''Creates table for all hg19 genes that contain:
+1) Chromosome name 2) start 3) end 4)gene name 5) gene length 6) GC%'''
+########################################################################
 
 from __future__ import absolute_import, division, print_function
-from collections import Counter
 import pybedtools
-import gzip
 import ipdb
 
 #---------------------
@@ -53,19 +51,8 @@ for record in genes:
     fw.write('%s\t%d\t%d\t%s\t%d\t%f\n' %(chrom, start, end, name, length, GC_percent))
 
 fw.close()
-#---------------------
-#Create a bed file with chr, start, end, name, and GC content
 
-### Note: hg19.chr*.fa files are located on external hard drive ###
-'''
-for i in range(0,len(chroms)):
-    fasta = '/Volumes/My Book/Genome_Analysis-Final_Project/%s.fa.gz' % chroms[i]
-    import ipdb; ipdb.set_trace()
-    #fa = genes.sequence(fi = fasta) #this will run the whole file,only
-    #want it by chromosome...
 
-    #fw = open('%s.tsv' %chroms[i], 'w')
-'''
 
 
 
